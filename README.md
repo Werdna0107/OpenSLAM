@@ -4,7 +4,7 @@
 > Compact open-source 3D scanner for **architectural scanning** built with **Livox Mid-360** and **NanoPi Zero 2**.  
 > Scan any space and get a full 3D point cloud ready for import into Share Studio.
 
-![OpenSLAM Scanner](images/scanner_main.jpg)
+![OpenSLAM Scanner](images/b8a8bbff-2bd7-42a2-ba9b-e9cb7aeee88f.jpg)
 
 📣 **Questions & support → [Telegram @a2blog](https://t.me/a2blog)**
 
