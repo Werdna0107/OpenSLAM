@@ -147,7 +147,7 @@ OpenSLAM/
 │   └── stand.stl
 ├── software/
 │   ├── openslam.apk
-│   └── converter_v2.4.4.exe
+│   └── A2 Bin to ShareStudio.exe
 └── images/
     ├── resized-1.jpg
     ├── resized-2.jpg
