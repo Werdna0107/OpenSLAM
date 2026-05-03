@@ -30,41 +30,22 @@ The scanner is **open hardware**: buy the components, print the parts, assemble.
 
 ## 📦 Components
 
-### 🔩 Electronics
+<table>
+  <tr>
+    <td align="center"><img src="images/components/1_lidar.jpg" width="600"/><br/><b>1. Livox Mid-360</b><br/>Main LiDAR sensor. Mid-360S also supported</td>
+    <td align="center"><img src="images/components/2_nanopi.jpg" width="600"/><br/><b>2. NanoPi Zero 2</b><br/>Must have Wi-Fi module and eMMC storage</td>
+    <td align="center"><img src="images/components/3_powerbanks.jpg" width="600"/><br/><b>3. Powerbank</b><br/>2 outputs required: one 10W+, one with 12V or 20V PD output.<br/>Tested: <b>HPS99</b> ✅ · HPS36 and Vectorgear should work (lighter, untested)</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="images/components/4_cables.jpg" width="600"/><br/><b>4. LiDAR cable + USB-C PD trigger</b><br/>Rigid 0.5m (durable) or flexible 0.2m (compact).<br/>USB-C PD trigger 12V or 20V — soldered to power end.<br/><i>We solder it for you if you contact us for setup</i></td>
+    <td align="center"><img src="images/components/5_fasteners.jpg" width="600"/><br/><b>5. Fasteners</b><br/>M3×8 × 4pcs — LiDAR to body<br/>M2.5×12 × 4pcs — NanoPi to body<br/>1/4" flat nut × 1 — handle to body<br/>1/4" bolt × 1 — stand to powerbank</td>
+    <td align="center"><img src="images/components/6_printed.jpg" width="600"/><br/><b>6. 3D Printed Parts</b><br/>Body · LiDAR guard · Battery stand<br/>See <a href="#%EF%B8%8F-3d-printed-parts">3D Printed Parts</a> section ↓</td>
+  </tr>
+</table>
 
-| # | Component | Details |
-|---|-----------|---------|
-| 1 | **Livox Mid-360** | Main LiDAR sensor. Mid-360S also supported |
-| 2 | **NanoPi Zero 2** | Must have **Wi-Fi module** and **eMMC storage** |
-| 3 | **Powerbank** | 2 outputs required: one 10W+, one with **12V or 20V PD output**. Tested on **HPS99** — works great. HPS36 and Vectorgear should also work (lighter, but untested) |
-
-### 🔌 Cables
-
-| # | Component | Details |
-|---|-----------|---------|
-| 4 | **NanoPi power cable** | Min. 15cm, USB-C on board side. Second end depends on powerbank: USB-C for HPS99, USB-A for Vectorgear |
-| 5 | **LiDAR cable** | Connects LiDAR to board and power. Two options: **rigid** (0.5m, more durable) or **flexible** (0.2m, less bulk but less durable) |
-| 6 | **USB-C PD trigger** | 12V or 20V, soldered to the LiDAR power end. *If you contact us for setup, we solder this for you when you provide the components* |
-
-### 🔧 Fasteners
-
-| # | Component | Qty |
-|---|-----------|-----|
-| 7 | **M3×8 screws** | 4× — LiDAR to body |
-| 8 | **M2.5×12 screws** | 4× — NanoPi to body |
-| 9 | **1/4" flat nut** | 1× — handle attachment to body |
-| 10 | **1/4" bolt** | 1× — stand attachment to powerbank |
-
-### 🖨️ 3D Printed Parts
-
-| # | Part | Purpose |
-|---|------|---------|
-| 11 | **Body** | Main frame — LiDAR, NanoPi and powerbank all mount to this |
-| 12 | **LiDAR guard** | Protects the fragile sensor part from drops |
-| 13 | **Battery stand** | Keeps the scanner stable when set down |
-
-> See STL files and print settings in the [3D Printed Parts](#%EF%B8%8F-3d-printed-parts) section below ↓
-
+> 💬 Questions about components? — **[t.me/a2blogchat](https://t.me/a2blogchat)**
+> 
+> 📐 Need a custom form factor? We can design it — **[write us](https://t.me/a2blogchat)**
 ---
 
 > 💬 **Not sure which components to pick?** Ask in our chat — **[t.me/a2blogchat](https://t.me/a2blogchat)**
