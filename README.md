@@ -32,14 +32,14 @@ The scanner is **open hardware**: buy the components, print the parts, assemble.
 
 <table>
   <tr>
-    <td align="center"><img src="images/components/resized-1.jpg" width="600"/><br/><b>1. Livox Mid-360</b><br/>Main LiDAR sensor. Mid-360S also supported</td>
-    <td align="center"><img src="images/components/resized-2.jpg" width="600"/><br/><b>2. NanoPi Zero 2</b><br/>Must have Wi-Fi module and eMMC storage</td>
-    <td align="center"><img src="images/components/resized-3.jpg" width="600"/><br/><b>3. Powerbank</b><br/>2 outputs required: one 10W+, one with 12V or 20V PD output.<br/>Tested: <b>HPS99</b> ✅ · HPS36 and Vectorgear should work (lighter, untested)</td>
+    <td align="center"><img src="images/components/resized-1.jpg" width="250"/><br/><b>1. Livox Mid-360</b><br/>Main LiDAR sensor. Mid-360S also supported</td>
+    <td align="center"><img src="images/components/resized-2.jpg" width="250"/><br/><b>2. NanoPi Zero 2</b><br/>Must have Wi-Fi module and eMMC storage</td>
+    <td align="center"><img src="images/components/resized-3.jpg" width="250"/><br/><b>3. Powerbank</b><br/>2 outputs required: one 10W+, one with 12V or 20V PD output.<br/>Tested: <b>HPS99</b> ✅ · HPS36 and Vectorgear should work (lighter, untested)</td>
   </tr>
   <tr>
-    <td align="center"><img src="images/components/resized-4.jpg" width="600"/><br/><b>4. LiDAR cable + USB-C PD trigger</b><br/>Rigid 0.5m (durable) or flexible 0.2m (compact).<br/>USB-C PD trigger 12V or 20V — soldered to power end.<br/><i>We solder it for you if you contact us for setup</i></td>
-    <td align="center"><img src="images/components/resized-5.jpg" width="600"/><br/><b>5. Fasteners</b><br/>M3×8 × 4pcs — LiDAR to body<br/>M2.5×12 × 4pcs — NanoPi to body<br/>1/4" flat nut × 1 — handle to body<br/>1/4" bolt × 1 — stand to powerbank</td>
-    <td align="center"><img src="images/components/resized-6.jpg" width="600"/><br/><b>6. 3D Printed Parts</b><br/>Body · LiDAR guard · Battery stand<br/>See <a href="#%EF%B8%8F-3d-printed-parts">3D Printed Parts</a> section ↓</td>
+    <td align="center"><img src="images/components/resized-4.jpg" width="250"/><br/><b>4. LiDAR cable + USB-C PD trigger</b><br/>Rigid 0.5m (durable) or flexible 0.2m (compact).<br/>USB-C PD trigger 12V or 20V — soldered to power end.<br/><i>We solder it for you if you contact us for setup</i></td>
+    <td align="center"><img src="images/components/resized-5.jpg" width="250"/><br/><b>5. Fasteners</b><br/>M3×8 × 4pcs — LiDAR to body<br/>M2.5×12 × 4pcs — NanoPi to body<br/>1/4" flat nut × 1 — handle to body<br/>1/4" bolt × 1 — stand to powerbank</td>
+    <td align="center"><img src="images/components/resized-6.jpg" width="250"/><br/><b>6. 3D Printed Parts</b><br/>Body · LiDAR guard · Battery stand<br/>See <a href="#%EF%B8%8F-3d-printed-parts">3D Printed Parts</a> section ↓</td>
   </tr>
 </table>
 
