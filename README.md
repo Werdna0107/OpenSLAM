@@ -30,15 +30,46 @@ The scanner is **open hardware**: buy the components, print the parts, assemble.
 
 ## 📦 Components
 
+### 🔩 Electronics
+
 | # | Component | Details |
 |---|-----------|---------|
-| 1 | **Livox Mid-360** | Main LiDAR sensor |
-| 2 | **NanoPi Zero 2** | Onboard computer |
-| 3 | **Powerbank** | 10,000+ mAh recommended |
-| 4 | **M3 Screws** | 8× M3×10mm |
-| 5 | **3D Printed Parts** | See section below ↓ |
+| 1 | **Livox Mid-360** | Main LiDAR sensor. Mid-360S also supported |
+| 2 | **NanoPi Zero 2** | Must have **Wi-Fi module** and **eMMC storage** |
+| 3 | **Powerbank** | 2 outputs required: one 10W+, one with **12V or 20V PD output**. Tested on **HPS99** — works great. HPS36 and Vectorgear should also work (lighter, but untested) |
 
-![Components](images/components_overview.jpg)
+### 🔌 Cables
+
+| # | Component | Details |
+|---|-----------|---------|
+| 4 | **NanoPi power cable** | Min. 15cm, USB-C on board side. Second end depends on powerbank: USB-C for HPS99, USB-A for Vectorgear |
+| 5 | **LiDAR cable** | Connects LiDAR to board and power. Two options: **rigid** (0.5m, more durable) or **flexible** (0.2m, less bulk but less durable) |
+| 6 | **USB-C PD trigger** | 12V or 20V, soldered to the LiDAR power end. *If you contact us for setup, we solder this for you when you provide the components* |
+
+### 🔧 Fasteners
+
+| # | Component | Qty |
+|---|-----------|-----|
+| 7 | **M3×8 screws** | 4× — LiDAR to body |
+| 8 | **M2.5×12 screws** | 4× — NanoPi to body |
+| 9 | **1/4" flat nut** | 1× — handle attachment to body |
+| 10 | **1/4" bolt** | 1× — stand attachment to powerbank |
+
+### 🖨️ 3D Printed Parts
+
+| # | Part | Purpose |
+|---|------|---------|
+| 11 | **Body** | Main frame — LiDAR, NanoPi and powerbank all mount to this |
+| 12 | **LiDAR guard** | Protects the fragile sensor part from drops |
+| 13 | **Battery stand** | Keeps the scanner stable when set down |
+
+> See STL files and print settings in the [3D Printed Parts](#%EF%B8%8F-3d-printed-parts) section below ↓
+
+---
+
+> 💬 **Not sure which components to pick?** Ask in our chat — **[t.me/a2blogchat](https://t.me/a2blogchat)**
+> 
+> 📐 **Need a custom form factor** with this same architecture? We can design it — [write us](https://t.me/a2blogchat)
 
 ---
 
