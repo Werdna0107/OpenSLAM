@@ -152,7 +152,8 @@ OpenSLAM/
     ├── resized-3.jpg
     ├── resized-4.jpg
     ├── resized-5.jpg
-    └── resized-6.jpg
+    ├── resized-5.jpg
+    └── scanner.jpg
 ```
 
 ---
