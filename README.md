@@ -124,13 +124,19 @@ If you want to configure everything yourself, here's what needs to be done on th
 OpenSLAM/
 ├── README.md
 ├── stl/
-│   ├── lidar_mount.stl
-│   ├── main_body.stl
-│   └── battery_holder.stl
+│   ├── head.stl
+│   ├── guard.stl
+│   └── stand.stl
 ├── software/
 │   ├── openslam.apk
 │   └── converter_v2.4.4.exe
 └── images/
+    ├── resized-1.jpg
+    ├── resized-2.jpg
+    ├── resized-3.jpg
+    ├── resized-4.jpg
+    ├── resized-5.jpg
+    └── resized-6.jpg
 ```
 
 ---
