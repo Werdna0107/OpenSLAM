@@ -5,6 +5,7 @@
 > Scan any space and get a full 3D point cloud ready for import into Share Studio.
 
 ![OpenSLAM Scanner](images/scanner.jpg)
+![Point cloud example](images/resized-pointcloud.jpg)
 
 📣 **Questions & support → [Telegram @a2blog](https://t.me/a2blog)**
 
@@ -153,6 +154,7 @@ OpenSLAM/
     ├── resized-4.jpg
     ├── resized-5.jpg
     ├── resized-5.jpg
+    ├── resized-pointcloud.jpg
     └── scanner.jpg
 ```
 
