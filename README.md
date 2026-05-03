@@ -6,7 +6,7 @@
 
 <img src="images/scanner.jpg" width="50%"/>
 
-<img src="images/resized-pointcloud.jpg" width="100%"/>
+<img src="images/pointcloud.jpg" width="100%"/>
 
 📣 **Questions & support → [Telegram @a2blog](https://t.me/a2blog)**
 
@@ -155,7 +155,7 @@ OpenSLAM/
     ├── resized-4.jpg
     ├── resized-5.jpg
     ├── resized-5.jpg
-    ├── resized-pointcloud.jpg
+    ├── pointcloud.jpg
     └── scanner.jpg
 ```
 
