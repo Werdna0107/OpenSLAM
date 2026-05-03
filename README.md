@@ -80,8 +80,8 @@ The repository includes ready-to-use software in the [`/software`](software/) fo
 
 | File | Description |
 |------|-------------|
-| `openslam.apk` | Android app — start/stop scanner, monitor status |
-| `A2 Bin to ShareStudio.exe` | Converts scan output to Share Studio format (**v2.4.4**, may update) |
+| [`openslam.apk`](software/openslam.apk) | Android app — start/stop scanner, monitor status |
+| [`A2 Bin to ShareStudio.exe`](software/A2%20Bin%20to%20ShareStudio.exe) | Converts scan output to Share Studio format (**v2.4.4**, may update) |
 
 ### Option A — Contact us for setup (recommended)
 
