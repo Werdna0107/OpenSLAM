@@ -73,20 +73,6 @@ The scanner is **open hardware**: buy the components, print the parts, assemble.
 
 ---
 
-## 🖨️ 3D Printed Parts
-
-| Part | File | Infill |
-|------|------|--------|
-| LiDAR Mount | [`lidar_mount.stl`](stl/lidar_mount.stl) | 30% |
-| Main Body | [`main_body.stl`](stl/main_body.stl) | 25% |
-| Battery Holder | [`battery_holder.stl`](stl/battery_holder.stl) | 20% |
-
-Material: PLA or PETG · Layer height: 0.2mm · Supports: Main Body only
-
-![Printed parts](images/printed_parts.jpg)
-
----
-
 ## 🔧 Assembly
 
 [![Watch assembly on YouTube Shorts](images/thumbnail_assembly.jpg)](https://youtube.com/YOUR_ASSEMBLY_SHORTS_LINK)
