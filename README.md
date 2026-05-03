@@ -64,12 +64,9 @@ Material: PLA or PETG · Layer height: 0.2mm · Supports: Body only
 
 ## 🔧 Assembly
 
-[![Watch assembly on YouTube Shorts](images/thumbnail_assembly.jpg)](https://youtube.com/YOUR_ASSEMBLY_SHORTS_LINK)
+Only a screwdriver with bits for **M3** and **M2.5** screws needed. Assembly takes **10–15 minutes**.
 
-> Full assembly from components shown in the Shorts above.
-
-![Assembly step 1](images/assembly_1.jpg)
-![Assembly step 2](images/assembly_2.jpg)
+▶️ [Watch assembly on YouTube Shorts](https://youtube.com/shorts/SkXs5TkPnAA?si=5-Hhbowyo1oytG3z)
 
 ---
 
