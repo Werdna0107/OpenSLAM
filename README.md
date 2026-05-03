@@ -27,7 +27,6 @@ A handheld SLAM scanner designed for architects and surveyors — capture spatia
 The scanner is **open hardware**: source the components, 3D-print the parts, and assemble it yourself. For software, you can either handle the dataset conversion workflow on your own or contact us for setup and support.
 
 
-
 ---
 
 ## 📦 Components
@@ -45,11 +44,21 @@ The scanner is **open hardware**: source the components, 3D-print the parts, and
   </tr>
 </table>
 
-
-
 > 💬 **Not sure which components to pick?** Ask in our chat — **[t.me/a2blogchat](https://t.me/a2blogchat)**
 > 
 > 📐 **Need a custom form factor** with this same architecture? We can design it — [write us](https://t.me/a2blogchat)
+
+---
+
+## 🖨️ 3D Printed Parts
+
+| Part | File | Infill |
+|------|------|--------|
+| Body | [`head.stl`](stl/head.stl) | 25% |
+| LiDAR guard | [`guard.stl`](stl/guard.stl) | 20% |
+| Battery stand | [`stand.stl`](stl/stand.stl) | 20% |
+
+Material: PLA or PETG · Layer height: 0.2mm · Supports: Body only
 
 ---
 
