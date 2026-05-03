@@ -20,7 +20,7 @@
 
 ---
 
-## 🤔 What is this?
+## 💡 What is this?
 
 A handheld SLAM scanner designed specifically for **architectural use** — scan rooms, buildings, and spaces, then bring the result into **Share Studio** as a point cloud.
 
