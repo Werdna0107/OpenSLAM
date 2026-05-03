@@ -22,9 +22,11 @@
 
 ## 💡 What is this?
 
-A handheld SLAM scanner designed specifically for **architectural use** — scan rooms, buildings, and spaces, then bring the result into **Share Studio** as a point cloud.
+A handheld SLAM scanner designed for architects and surveyors — capture spatial datasets and convert them for use in **Share Studio**, where point clouds are generated and processed.
 
-The scanner is **open hardware**: buy the components, print the parts, assemble. For software setup you have two paths — do it yourself or contact us.
+The scanner is **open hardware**: source the components, 3D-print the parts, and assemble it yourself. For software, you can either handle the dataset conversion workflow on your own or contact us for setup and support.
+
+
 
 ---
 
