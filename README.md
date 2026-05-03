@@ -38,8 +38,8 @@ The scanner is **open hardware**: buy the components, print the parts, assemble.
   </tr>
   <tr>
     <td align="center" valign="top"><img src="images/resized-4.jpg" width="300"/><br/><br/><b>4. LiDAR cable + USB-C PD trigger</b><br/>Rigid 0.5m (durable) or flexible 0.2m (compact).<br/>USB-C PD trigger 12V or 20V — soldered to power end</td>
-    <td align="center" valign="top"><img src="images/resized-5.jpg" width="300"/><br/><br/><b>5. Fasteners</b><br/>M3×8 × 4pcs — LiDAR to body<br/>M2.5×12 × 4pcs — NanoPi to body<br/>1/4" flat nut × 1 — handle to body<br/>1/4" bolt × 1 — stand to powerbank</td>
-    <td align="center" valign="top"><img src="images/resized-6.jpg" width="300"/><br/><br/><b>6. 3D Printed Parts</b><br/>Body · LiDAR guard · Battery stand<br/>See <a href="#%EF%B8%8F-3d-printed-parts">3D Printed Parts</a> section ↓</td>
+    <td align="center" valign="top"><img src="images/resized-5.jpg" width="300"/><br/><br/><b>5. Fasteners</b><br/>M3×8 × 4pcs — lidar to body<br/>M2.5×12 × 4pcs — NanoPi to body<br/>1/4" flat nut × 1 — handle to body<br/>1/4" bolt × 1 — stand to powerbank</td>
+    <td align="center" valign="top"><img src="images/resized-6.jpg" width="300"/><br/><br/><b>6. 3D Printed Parts</b><br/>head · lidar guard · battery stand<br/>See <a href="#%EF%B8%8F-3d-printed-parts">3D Printed Parts</a> section ↓</td>
   </tr>
 </table>
 
