@@ -105,18 +105,32 @@ If you want to configure everything yourself, here's what needs to be done on th
 
 ## 📡 How Scanning Works
 
-[![Watch scanning on YouTube Shorts](images/thumbnail_scanning.jpg)](https://youtube.com/YOUR_SCANNING_SHORTS_LINK)
+▶️ [Full process — from power-on to point cloud (YouTube Shorts)](https://youtube.com/shorts/bw-Ms9yZcY4?si=9ZZbCUVC4t5Bi-bY)
 
-> From power-on to finished point cloud — shown in the Shorts above.
+> The section below applies to the **our setup** version (APK + converter). If you configured everything yourself — you have your own pipeline.
 
-1. Power on the scanner — it boots and broadcasts a Wi-Fi hotspot
-2. Connect your phone to the hotspot and open the app
-3. Press **Start** — walk through the space slowly
-4. Press **Stop** — scan is saved to the device
-5. Transfer the file to PC and run `converter_v2.4.4.exe`
-6. Import the result into **Share Studio**
+### Starting a scan
 
-![Point cloud result](images/pointcloud_example.jpg)
+1. Connect the powerbank — scanning starts automatically
+2. Wait **5 seconds** with the scanner still and flat before picking it up
+3. Slowly lift it and start walking through the space
+4. To stop: use the **app** or simply disconnect the power
+
+### Connecting the app
+
+1. Disable VPN and mobile data on your phone
+2. Connect to Wi-Fi network **A2-scanner**, password `12345678`
+3. Open the app — once the LiDAR is powered on you'll see the filename, file size growing in real time, and recording duration
+4. The app also shows scanning recommendations during capture
+
+▶️ [App interface and scanning tips (YouTube Shorts)](https://youtube.com/shorts/_l46X66WYL8?si=aoAQ2SCx_Rhjt1gZ)
+
+### Getting your data
+
+1. Insert a USB drive into the NanoPi's USB port
+2. Copy the scan file via the app
+3. Run `converter_v2.4.4.exe` on PC to convert the file
+4. Import into **Share Studio** and build the point cloud
 
 ---
 
