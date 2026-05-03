@@ -17,6 +17,8 @@
 - [Assembly](#-assembly)
 - [Software & Setup](#-software--setup)
 - [How Scanning Works](#-how-scanning-works)
+- [Roadmap](#️-roadmap)
+
 
 ---
 
@@ -141,9 +143,28 @@ OpenSLAM/
 
 ---
 
+## 🛣️ Roadmap
+
+This is not a finished project — it's an actively evolving platform.
+
+The current version delivers clean LiDAR-only point clouds. Here's what's coming:
+
+| Feature | Status | What it gives you |
+|---------|--------|-------------------|
+| **RTK GPS integration** | 🔄 In progress | Geo-referenced point clouds placed directly into world coordinate systems |
+| **Insta360 camera integration** | 🔄 In progress | Full-color point clouds using 8K 360° video — every point gets its real color |
+
+Once both sensors are integrated, OpenSLAM will produce **colored, geo-referenced 3D scans** out of the box — no post-processing, no external reference points needed.
+
+> 📣 Follow updates in our Telegram — **[t.me/a2blog](https://t.me/a2blog)**
+
+
+---
+
 ## 📄 License
 
 MIT License — free to use, modify, and share. See [`LICENSE`](LICENSE).
+
 
 ---
 
