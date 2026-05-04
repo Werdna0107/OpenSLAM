@@ -1,7 +1,7 @@
 # 🔭 OpenSLAM
-### DIY Architectural LiDAR SLAM Scanner
+### DIY Architectural & Surveying LiDAR SLAM Scanner
 
-> Compact open-source 3D scanner for **architectural scanning** built with **Livox Mid-360** and **NanoPi Zero 2**.  
+> Compact open-source 3D scanner for **architectural and surveying work** built with **Livox Mid-360** and **NanoPi Zero 2**.  
 > Scan any space and get a full 3D point cloud ready for import into Share Studio.
 
 <img src="images/scanner.jpg" width="50%"/>
@@ -26,7 +26,7 @@
 
 ## 💡 What is this?
 
-A handheld SLAM scanner designed for architects and surveyors — capture spatial datasets and convert them for use in **Share Studio**, where point clouds are generated and processed.
+A handheld SLAM scanner designed for **architects, surveyors, and construction professionals** — capture spatial datasets and convert them for use in **Share Studio**, where point clouds are generated and processed.
 
 The scanner is **open hardware**: source the components, 3D-print the parts, and assemble it yourself. For software, you can either handle the dataset conversion workflow on your own or contact us for setup and support.
 
@@ -133,6 +133,12 @@ If you want to configure everything yourself, here's what needs to be done on th
 2. Copy the scan file via the app
 3. Run `converter_v2.4.4.exe` on PC to convert the file
 4. Import into **Share Studio** and build the point cloud
+
+### Accuracy vs total station
+
+▶️ [SLAM scanner vs total station — measurement accuracy comparison (YouTube)](https://youtu.be/1wsdnFhcVqg?si=2cW65tGUr027HEWM)
+
+Independent comparison of OpenSLAM point cloud data against total station survey measurements — useful if you're evaluating the scanner for surveying applications.
 
 ---
 
