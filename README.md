@@ -150,6 +150,7 @@ OpenSLAM/
 ├── stl/
 │   ├── head.stl
 │   ├── guard.stl
+│   ├── cover.stl
 │   └── stand.stl
 ├── software/
 │   ├── openslam.apk
