@@ -39,7 +39,7 @@ The scanner is **open hardware**: source the components, 3D-print the parts, and
   <tr>
     <td align="center" valign="top"><img src="images/resized-1.jpg" width="300"/><br/><br/><b> Livox Mid-360</b><br/>Main LiDAR sensor. Mid-360S also supported</td>
     <td align="center" valign="top"><img src="images/resized-2.jpg" width="300"/><br/><br/><b> NanoPi Zero 2</b><br/>Must have Wi-Fi module and eMMC storage</td>
-    <td align="center" valign="top"><img src="images/resized-3.1.jpg" width="300"/><br/><br/><b> Powerbank</b><br/>2 outputs required: one 10W+, one with 12V or 20V PD output.<br/>Tested: <b>HPS99</b> ✅ · HPS36 and Vectorgear should work (lighter, untested)</td>
+    <td align="center" valign="top"><img src="images/resized-3.1.jpg" width="300"/><br/><br/><b> Powerbank</b><br/>2 outputs required: one 10W+, one with 12V or 20V PD output.<br/>Tested: <b>HPS99</b> ✅ · HPS36 should work (lighter, untested)</td>
   </tr>
   <tr>
     <td align="center" valign="top"><img src="images/resized-4.jpg" width="300"/><br/><br/><b> LiDAR cable + USB-C PD trigger</b><br/>Rigid 0.5m (durable) or flexible 0.2m (compact).<br/>USB-C PD trigger 12V or 20V — soldered to power end</td>
