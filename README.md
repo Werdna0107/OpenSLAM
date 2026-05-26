@@ -83,7 +83,7 @@ The repository includes ready-to-use software in the [`/software`](software/) fo
 | File | Description |
 |------|-------------|
 | [Share Studio](https://drive.google.com/file/d/1ULAfoiqowkNw1V6ztaFk67XhTIfReGN7/view?usp=drive_link) | Point cloud processing software — generates the final point cloud from the converted scan |
-| [`openslam.apk`](software/openslam.apk) | Android app — start/stop scanner, monitor status |
+| [`openslam.zip`](software/openslam.zip) | Android app (APK inside the archive) — start/stop scanner, monitor status |
 | [`A2 Bin to ShareStudio.exe`](software/A2%20Bin%20to%20ShareStudio.exe) | Converts scan output to Share Studio format (**v2.4.4**, may update) |
 
 ### Option A — Contact us for setup (recommended)
@@ -156,7 +156,7 @@ OpenSLAM/
 │   ├── cover.stl
 │   └── stand.stl
 ├── software/
-│   ├── openslam.apk
+│   ├── openslam.zip
 │   └── A2 Bin to ShareStudio.exe
 └── images/
     ├── resized-1.jpg
