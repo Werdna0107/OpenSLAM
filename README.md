@@ -61,6 +61,8 @@ The scanner is **open hardware**: source the components, 3D-print the parts, and
 | Body | [`head.stl`](stl/head.stl) |
 | LiDAR guard | [`guard.stl`](stl/guard.stl) |
 | Battery stand | [`stand.stl`](stl/stand.stl) |
+| Cover LiDAR | [`cover.stl`](stl/cover.stl) |
+
 
 Material: PLA or PETG · Layer height: 0.2mm · Supports: Body only
 
