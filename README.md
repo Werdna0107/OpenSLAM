@@ -104,7 +104,7 @@ The repository includes ready-to-use software in the [`/software`](software/) fo
 
 | File | Description |
 |------|-------------|
-| [Share Studio](https://drive.google.com/file/d/1ULAfoiqowkNw1V6ztaFk67XhTIfReGN7/view?usp=drive_link) | Point cloud processing software — generates the final point cloud from the converted scan |
+| Share Studio **v2.2.4** *(not included, third-party)* | Point cloud processing software by SHARE3DCAM — generates the final point cloud from the converted scan. The converter is built for **v2.2.4**; newer versions (2.6.x) are not compatible yet. Download v2.2.4 from the official SHARE website: *Support → Software → SHARE PointClouds Studio → Version History*. Having trouble? Message me on Telegram [@Al_And_Leon](https://t.me/Al_And_Leon). |
 | [`AtlasScanner.apk`](software/AtlasScanner.apk) | Android app — connect to the scanner, watch the live map and metrics, manage files, update the scanner's software |
 | [`A2 Bin to ShareStudio.exe`](software/A2%20Bin%20to%20ShareStudio.exe) | Converts scan output to Share Studio format. Now takes multiple `.bin` files at once, trims start **and end** |
 | [`A2 SD Card Installer.exe`](software/A2%20SD%20Card%20Installer.exe) | Flashes and configures a microSD card — used for remote setup (Option A below) |
@@ -266,3 +266,7 @@ MIT License — free to use, modify, and share. See [`LICENSE`](LICENSE).
 **Commercial inquiries** (board setup, scanner assembly, custom builds) — [a2-pik@yandex.com](mailto:a2-pik@yandex.com)
 
 If this helped you, give the repo a ⭐
+
+---
+
+*OpenSLAM is an independent project and is not affiliated with SHARE3DCAM. "SHARE" and "PointClouds Studio" are trademarks of their respective owners.*
