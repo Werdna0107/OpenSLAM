@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OpenSLAM — open-hardware handheld LiDAR SLAM scanner</title>
+<meta name="description" content="OpenSLAM is an open-hardware handheld LiDAR SLAM scanner built on Livox Mid-360 and NanoPi Zero 2. Download STL files and software, or book a remote setup.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="canonical" href="https://werdna0107.github.io/OpenSLAM/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OpenSLAM">
+<meta property="og:title" content="OpenSLAM — handheld LiDAR SLAM scanner you can build">
+<meta property="og:description" content="OpenSLAM is an open-hardware handheld LiDAR SLAM scanner built on Livox Mid-360 and NanoPi Zero 2. Download STL files and software, or book a remote setup.">
+<meta property="og:url" content="https://werdna0107.github.io/OpenSLAM/">
+<meta property="og:image" content="https://werdna0107.github.io/OpenSLAM/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OpenSLAM — handheld LiDAR SLAM scanner you can build">
+<meta name="twitter:description" content="OpenSLAM is an open-hardware handheld LiDAR SLAM scanner built on Livox Mid-360 and NanoPi Zero 2. Download STL files and software, or book a remote setup.">
+<meta name="twitter:image" content="https://werdna0107.github.io/OpenSLAM/img/og.jpg">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "Product", "name": "OpenSLAM", "description": "OpenSLAM is an open-hardware handheld LiDAR SLAM scanner built on Livox Mid-360 and NanoPi Zero 2. Download STL files and software, or book a remote setup.", "image": "https://werdna0107.github.io/OpenSLAM/img/hero.jpg", "brand": {"@type": "Brand", "name": "A2"}, "url": "https://werdna0107.github.io/OpenSLAM/", "sameAs": ["https://github.com/Werdna0107/OpenSLAM", "https://www.youtube.com/@a2-lab", "https://t.me/a2blog"]}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is OpenSLAM free?", "acceptedAnswer": {"@type": "Answer", "text": "The hardware design and STL files are published under the MIT license. Remote software setup is a paid option."}}, {"@type": "Question", "name": "How does remote setup work?", "acceptedAnswer": {"@type": "Answer", "text": "You insert a microSD card into your PC and join a short remote session. We provide the license file and run the SD Card Installer. Then you put the card in the scanner and it is ready."}}, {"@type": "Question", "name": "Can I pay with advertising?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, if you have an audience in scanning, surveying, construction tech or robotics. Message us on Telegram and tell us about your channel."}}, {"@type": "Question", "name": "How accurate is it?", "acceptedAnswer": {"@type": "Answer", "text": "We compared OpenSLAM clouds with total station measurements on a real site. The comparison video is on our YouTube channel."}}, {"@type": "Question", "name": "Can I get colored point clouds?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Mount an Insta360 camera on the optional V-mount plate. The pipeline colors the cloud from the 360° footage and builds a panoramic tour."}}, {"@type": "Question", "name": "Do you work with teams outside Russia?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Setup and support are remote, so your location does not matter."}}]}]</script>
+<!-- Analytics: paste your GA4 measurement ID below and uncomment (see DEPLOY.md) -->
+<!--
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+-->
+<style>
+:root{
+  --bg:#ECEEF0; --surface:#F7F8F9; --ink:#111A22; --muted:#56636E; --line:#CBD2D7;
+  --accent:#D9780A; --accent-ink:#1A1206; --accent-soft:#F5DDBF;
+  --black:#000; --b-ink:#E8ECEF; --b-muted:#8A96A0; --b-line:#1E262D; --orange:#F29A1B;
+  --display:"Chakra Petch","Bahnschrift","Arial Narrow",sans-serif;
+  --body:"Public Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){color-scheme:dark;
+    --bg:#0E1317; --surface:#151C21; --ink:#E4E9EC; --muted:#93A0AA; --line:#28333B;
+    --accent:#F29A1B; --accent-soft:#3A2A12;}
+}
+:root[data-theme="dark"]{color-scheme:dark;
+  --bg:#0E1317; --surface:#151C21; --ink:#E4E9EC; --muted:#93A0AA; --line:#28333B;
+  --accent:#F29A1B; --accent-soft:#3A2A12;}
+*{box-sizing:border-box}
+body{margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--body);padding-inline:16px}
+.wrap{max-width:1180px;margin-inline:auto}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.08;text-wrap:balance;margin:0}
+h2{font-size:clamp(28px,4vw,44px);letter-spacing:-.01em}
+h3{font-size:20px}
+p{margin:0}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 15px/1 var(--body);padding:14px 20px;border-radius:6px;text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap}
+.btn-primary{background:var(--orange);color:#1A1206}
+.btn-primary:hover{filter:brightness(1.08)}
+.btn-ghost{border-color:currentColor;background:transparent;color:inherit}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:#000;color:var(--b-ink);border-bottom:1px solid var(--b-line);margin-inline:-16px;padding-inline:16px}
+.nav .wrap{display:flex;align-items:center;gap:24px;height:60px}
+.logo{font:700 20px/1 var(--display);letter-spacing:.02em;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo i{width:10px;height:10px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px rgba(242,154,27,.25)}
+.nav nav{display:flex;gap:20px;margin-left:auto;font-size:14px}
+.nav nav a{text-decoration:none;color:var(--b-muted)}
+.nav nav a:hover{color:var(--b-ink)}
+.nav .btn{padding:10px 14px;font-size:14px}
+@media (max-width:820px){.nav nav{display:none}.nav .btn{margin-left:auto}}
+
+/* hero */
+.hero{background:#000;color:var(--b-ink);margin-inline:-16px;padding-inline:16px}
+.hero-top{display:grid;grid-template-columns:1.25fr 1fr;gap:32px 56px;align-items:end;padding-block:64px 8px}
+.hero h1{font-size:clamp(40px,6.2vw,80px);letter-spacing:-.015em}
+.hero h1 em{font-style:normal;color:var(--orange)}
+.hero .lede{color:#B9C3CA;font-size:18px;max-width:48ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.hero-img{margin:0 auto;max-width:1533px}
+.hero-img img{width:100%}
+.hud{display:flex;flex-wrap:wrap;gap:10px 32px;border-top:1px solid var(--b-line);padding-block:18px 28px;font:400 13px/1.4 var(--mono);color:var(--b-muted)}
+.hud b{color:var(--b-ink);font-weight:500}
+@media (max-width:860px){.hero-top{grid-template-columns:1fr;padding-top:44px}}
+
+section{padding-block:88px}
+.sec-head{display:grid;gap:14px;max-width:64ch;margin-bottom:40px}
+.sec-head p{color:var(--muted);font-size:17px}
+hr.rule{border:0;border-top:1px solid var(--line);margin:0}
+
+/* photo plates: product shots are on white, keep them on white in both themes */
+.plate{margin:0;background:#fff;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.plate img{width:100%}
+.cap{font:400 12px/1.5 var(--mono);color:var(--muted);margin-top:10px}
+
+/* hardware */
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.gallery .wide{grid-column:1/-1}
+.hw{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start}
+@media (max-width:900px){.hw{grid-template-columns:1fr}}
+.table-scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:11px 14px 11px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+td{color:var(--muted)} td:first-child{color:var(--ink);font-weight:600;white-space:nowrap}
+
+/* downloads */
+.dl{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.dl-card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.dl-card .kind{font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.dl-card p{color:var(--muted);font-size:14px}
+.files{list-style:none;margin:0;padding:0;display:grid;gap:0;border-top:1px solid var(--line)}
+.files a{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);text-decoration:none;font:400 13px/1.3 var(--mono)}
+.files a:hover{color:var(--accent)}
+.files span{color:var(--muted);font-variant-numeric:tabular-nums}
+.dl-note{margin-top:18px;color:var(--muted);font-size:14px}
+@media (max-width:1000px){.dl{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.dl{grid-template-columns:1fr}}
+
+/* software */
+.shots{display:grid;gap:16px}
+.shots .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:760px){.shots .row2{grid-template-columns:1fr}}
+
+/* steps */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.steps li{padding:22px 24px 26px 0;border-bottom:1px solid var(--line);display:grid;gap:8px;align-content:start}
+.steps .n{font:500 13px/1 var(--mono);color:var(--accent)}
+.steps p{color:var(--muted);font-size:15px}
+@media (max-width:860px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+
+/* videos */
+.vids{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.vid{display:grid;gap:10px;text-decoration:none;align-content:start}
+.thumb{position:relative;display:block;border-radius:8px;overflow:hidden;background:#000;aspect-ratio:16/9;max-width:100%}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb i{position:absolute;inset:auto auto 10px 10px;font-style:normal;font-size:13px;background:var(--orange);color:#1A1206;width:34px;height:34px;border-radius:50%;display:grid;place-items:center}
+.vid:hover h3{color:var(--accent)}
+.vid h3{font-size:18px}
+@media (max-width:1000px){.vids{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.vids{grid-template-columns:1fr}}
+
+/* offers */
+.offers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.offer{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.offer.featured{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.tag{align-self:flex-start;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:6px 8px;border-radius:4px;background:var(--line);color:var(--ink)}
+.featured .tag{background:var(--orange);color:#1A1206}
+.offer ul{margin:0;padding-left:18px;color:var(--muted);font-size:15px;display:grid;gap:6px}
+.offer p{color:var(--muted);font-size:15px}
+.offer .btn{margin-top:auto}
+.offer .btn-ghost{color:var(--ink)}
+@media (max-width:900px){.offers{grid-template-columns:1fr}}
+.pay-note{margin-top:20px;color:var(--muted);font-size:15px}
+
+/* proof */
+.proof{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.proof a{display:grid;gap:10px;padding:24px 24px 28px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.proof a:hover h3{color:var(--accent)}
+.proof p{color:var(--muted);font-size:15px}
+.proof .go{font:500 13px/1 var(--mono);color:var(--accent)}
+@media (max-width:860px){.proof{grid-template-columns:1fr}}
+.pill{font:500 11px/1 var(--mono);padding:5px 8px;border-radius:99px;border:1px solid var(--line);color:var(--ink);white-space:nowrap}
+.pill.on{border-color:var(--accent);color:var(--accent)}
+
+/* faq */
+.faq{border-top:1px solid var(--line);max-width:820px}
+.faq details{border-bottom:1px solid var(--line);padding:18px 0}
+.faq summary{cursor:pointer;font:600 18px/1.3 var(--display);list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);color:var(--accent)}
+.faq details[open] summary::after{content:"−"}
+.faq p{color:var(--muted);margin-top:10px;max-width:65ch}
+
+/* final */
+.final{background:#000;color:var(--b-ink);margin-inline:-16px;padding-inline:16px}
+.final .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:end}
+.final h2{font-size:clamp(30px,4.6vw,52px)}
+.final p{color:#B9C3CA;margin-top:14px;max-width:48ch}
+.contact{display:grid;gap:12px}
+.contact .row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--b-line);padding-bottom:12px;font:400 14px/1.4 var(--mono);flex-wrap:wrap}
+.contact .row>span:first-child{color:var(--b-muted)}
+.copy{background:none;border:1px solid var(--b-line);color:var(--b-ink);font:400 12px/1 var(--mono);padding:6px 8px;border-radius:4px;cursor:pointer}
+@media (max-width:860px){.final .wrap{grid-template-columns:1fr}}
+footer{padding-block:28px;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top"><i></i>OpenSLAM</a>
+    <nav aria-label="Sections">
+      <a href="#hardware">Hardware</a>
+      <a href="#download">Download</a>
+      <a href="#videos">Videos</a>
+      <a href="#software">Software</a>
+      <a href="#setup">Setup</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://github.com/Werdna0107/OpenSLAM">GitHub ★ 37</a>
+    </nav>
+    <a class="btn btn-primary" href="#setup">Book setup</a>
+  </div>
+</header>
+
+<section class="hero" id="top" aria-label="Introduction" style="padding-bottom:0">
+  <div class="wrap hero-top">
+    <div>
+      <span class="eyebrow" style="color:var(--b-muted)">Open-hardware handheld LiDAR SLAM</span>
+      <h1 style="margin-top:16px">Walk through a building. <em>Walk out with a point cloud.</em></h1>
+    </div>
+    <div>
+      <p class="lede">A compact SLAM scanner for architects, surveyors and construction teams. Livox Mid-360, NanoPi Zero 2, four 3D-printed parts. Assembly takes 5–10 minutes.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="#setup">Book a remote setup</a>
+        <a class="btn btn-ghost" href="#download">Download files</a>
+      </div>
+    </div>
+  </div>
+  <figure class="hero-img">
+    <img src="img/hero.jpg" width="1533" height="1026" alt="OpenSLAM handheld scanner with a point cloud of a colonnaded building it captured">
+  </figure>
+  <div class="wrap hud" aria-label="Scanner summary">
+    <span>LIDAR <b>Livox Mid-360 / 360S</b></span>
+    <span>FOV <b>360° × 59°</b></span>
+    <span>BOARD <b>NanoPi Zero 2</b></span>
+    <span>STORAGE <b>microSD 64 GB+</b></span>
+    <span>COLOR <b>Insta360 (optional)</b></span>
+    <span>LICENSE <b>MIT</b></span>
+  </div>
+</section>
+
+<main class="wrap">
+  <section id="hardware">
+    <div class="sec-head">
+      <span class="eyebrow">Hardware</span>
+      <h2>Parts you can source anywhere</h2>
+      <p>A LiDAR, a single-board computer, a powerbank, a microSD card, a few screws and four printed parts. Only a screwdriver with M3 and M2.5 bits is needed.</p>
+    </div>
+    <div class="hw">
+      <div class="gallery">
+        <figure class="plate wide"><img src="img/components-main.jpg" width="1030" height="1030" loading="lazy" alt="Main components: Livox Mid-360 LiDAR, NanoPi Zero 2 board, powerbank and LiDAR cable"></figure>
+        <figure class="plate"><img src="img/components-small.jpg" width="1400" height="935" loading="lazy" alt="Small parts: V30 microSD card, USB-C PD 12 V trigger, V-mount, M3×8 and M2.5×12 screws, 1/4 inch fixator"></figure>
+        <figure class="plate"><img src="img/components-printed.jpg" width="1030" height="1030" loading="lazy" alt="3D-printed parts: LiDAR guard, head and stand"></figure>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Part</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Livox Mid-360</td><td>Main sensor. Mid-360S also supported</td></tr>
+            <tr><td>NanoPi Zero 2</td><td>Wi-Fi module required, no eMMC needed</td></tr>
+            <tr><td>microSD card</td><td>64 GB minimum, U3/V30 or faster</td></tr>
+            <tr><td>Powerbank</td><td>Two outputs: 10 W+ and 12/20 V PD. Tested: HPS99</td></tr>
+            <tr><td>LiDAR cable</td><td>Rigid 0.5 m or flexible 0.2 m</td></tr>
+            <tr><td>USB-C PD trigger</td><td>12 or 20 V, soldered to the power end</td></tr>
+            <tr><td>V-mount plate</td><td>Optional, for a panorama camera on top</td></tr>
+            <tr><td>M3×8 ×4</td><td>LiDAR to body</td></tr>
+            <tr><td>M2.5×12 ×4</td><td>NanoPi to body</td></tr>
+            <tr><td>Fixator 1/4"</td><td>Handle or tripod mount</td></tr>
+            <tr><td>Printed parts</td><td>head, guard, stand, cover · PLA or PETG · 0.2 mm · supports on body only</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="download">
+    <div class="sec-head">
+      <span class="eyebrow">Download</span>
+      <h2>Print files and software</h2>
+      <p>Everything is hosted on GitHub. STL links open GitHub's 3D preview, where you can also download the file.</p>
+    </div>
+    <div class="dl">
+      <div class="dl-card">
+        <span class="kind">3D print · STL</span>
+        <h3>Scanner body</h3>
+        <p>Four parts, PLA or PETG.</p>
+        <ul class="files">
+          <li><a href="https://github.com/Werdna0107/OpenSLAM/blob/main/stl/head.stl">head.stl <span>73 KB</span></a></li>
+          <li><a href="https://github.com/Werdna0107/OpenSLAM/blob/main/stl/guard.stl">guard.stl <span>205 KB</span></a></li>
+          <li><a href="https://github.com/Werdna0107/OpenSLAM/blob/main/stl/stand.stl">stand.stl <span>66 KB</span></a></li>
+          <li><a href="https://github.com/Werdna0107/OpenSLAM/blob/main/stl/cover.stl">cover.stl <span>178 KB</span></a></li>
+        </ul>
+      </div>
+      <div class="dl-card">
+        <span class="kind">Android · APK</span>
+        <h3>Atlas Scanner app</h3>
+        <p>Live map, quality metrics, file transfer and onboard software updates.</p>
+        <ul class="files">
+          <li><a href="https://github.com/Werdna0107/OpenSLAM/raw/main/software/AtlasScanner.apk">AtlasScanner.apk <span>51 MB</span></a></li>
+        </ul>
+      </div>
+      <div class="dl-card">
+        <span class="kind">Windows · EXE</span>
+        <h3>Scan converter</h3>
+        <p>Converts .bin recordings in batches and trims start and end.</p>
+        <ul class="files">
+          <li><a href="https://github.com/Werdna0107/OpenSLAM/raw/main/software/A2%20Bin%20to%20ShareStudio.exe">Converter.exe <span>25 MB</span></a></li>
+        </ul>
+      </div>
+      <div class="dl-card">
+        <span class="kind">Windows · EXE</span>
+        <h3>SD Card Installer</h3>
+        <p>Flashes and configures the scanner's microSD card. Needs a license file from us.</p>
+        <ul class="files">
+          <li><a href="https://github.com/Werdna0107/OpenSLAM/raw/main/software/A2%20SD%20Card%20Installer.exe">Installer.exe <span>38 MB</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="dl-note">Maintaining an older eMMC-based unit? The previous app and converter are in the <a href="https://github.com/Werdna0107/OpenSLAM/releases/tag/legacy-emmc-2026-09">legacy release</a>.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section id="software">
+    <div class="sec-head">
+      <span class="eyebrow">Software</span>
+      <h2>See the scan while you walk</h2>
+      <p>The phone connects to the scanner over its own Wi-Fi. While you scan, the app draws the plan-view cloud and your trajectory, shows four quality metrics and the recording time left.</p>
+    </div>
+    <div class="shots">
+      <figure class="plate"><img src="img/app-monitor.jpg" width="1028" height="520" loading="lazy" alt="Monitor screen: before connecting, after connecting, and during a scan with live trajectory"></figure>
+      <div class="row2">
+        <figure class="plate"><img src="img/app-files.jpg" width="1028" height="520" loading="lazy" alt="Files screen: scan list, free space, copy and delete"></figure>
+        <figure class="plate"><img src="img/app-settings.jpg" width="1028" height="520" loading="lazy" alt="Settings screen: LiDAR model, clock sync and onboard software update"></figure>
+      </div>
+      <figure class="plate"><img src="img/converter-installer.jpg" width="1030" height="520" loading="lazy" alt="Desktop tools: scan converter and SD Card Installer"></figure>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="workflow">
+    <div class="sec-head">
+      <span class="eyebrow">Field workflow</span>
+      <h2>From power-on to point cloud</h2>
+    </div>
+    <ol class="steps">
+      <li><span class="n">01</span><h3>Power on</h3><p>Connect the powerbank. Recording starts automatically.</p></li>
+      <li><span class="n">02</span><h3>Hold still for 5 s</h3><p>Keep the scanner flat and still, then lift it slowly.</p></li>
+      <li><span class="n">03</span><h3>Walk the space</h3><p>Follow the live map and the scanning tips in the app.</p></li>
+      <li><span class="n">04</span><h3>Stop</h3><p>From the app, or just disconnect the power.</p></li>
+      <li><span class="n">05</span><h3>Copy the scan</h3><p>To a USB drive on the scanner, or straight to your phone.</p></li>
+      <li><span class="n">06</span><h3>Convert and process</h3><p>Batch-convert the recordings on your PC and build the point cloud.</p></li>
+    </ol>
+  </section>
+
+  <hr class="rule">
+
+  <section id="videos">
+    <div class="sec-head">
+      <span class="eyebrow">Videos</span>
+      <h2>Watch it built and used</h2>
+      <p>Short clips from our YouTube channel: assembly, a full scan, the app, and an accuracy test.</p>
+    </div>
+    <div class="vids">
+      <a class="vid" href="https://youtube.com/shorts/SkXs5TkPnAA">
+        <span class="thumb"><img src="img/yt-SkXs5TkPnAA.jpg" width="1280" height="720" loading="lazy" alt="Video thumbnail: scanner assembly"><i aria-hidden="true">▶</i></span>
+        <span class="eyebrow">Short</span><h3>Assembly in 5–10 minutes</h3>
+      </a>
+      <a class="vid" href="https://youtube.com/shorts/bw-Ms9yZcY4">
+        <span class="thumb"><img src="img/yt-bw-Ms9yZcY4.jpg" width="1280" height="720" loading="lazy" alt="Video thumbnail: full scanning process"><i aria-hidden="true">▶</i></span>
+        <span class="eyebrow">Short</span><h3>From power-on to point cloud</h3>
+      </a>
+      <a class="vid" href="https://youtube.com/shorts/_l46X66WYL8">
+        <span class="thumb"><img src="img/yt-_l46X66WYL8.jpg" width="1280" height="720" loading="lazy" alt="Video thumbnail: app interface and scanning tips"><i aria-hidden="true">▶</i></span>
+        <span class="eyebrow">Short</span><h3>App interface and scanning tips</h3>
+      </a>
+      <a class="vid" href="https://youtu.be/1wsdnFhcVqg">
+        <span class="thumb"><img src="img/yt-1wsdnFhcVqg.jpg" width="1280" height="720" loading="lazy" alt="Video thumbnail: SLAM scanner vs total station"><i aria-hidden="true">▶</i></span>
+        <span class="eyebrow">Video</span><h3>Accuracy vs total station</h3>
+      </a>
+    </div>
+    <p class="dl-note">More on the channel: <a href="https://www.youtube.com/@a2-lab">youtube.com/@a2-lab</a></p>
+  </section>
+
+  <hr class="rule">
+
+  <section id="setup">
+    <div class="sec-head">
+      <span class="eyebrow">Setup</span>
+      <h2>You build the hardware. We set up the software.</h2>
+      <p>We flash and configure your microSD card in a short remote session with the SD Card Installer. Put the card in the scanner and start scanning.</p>
+    </div>
+    <div class="offers">
+      <article class="offer featured">
+        <span class="tag">Paid option</span>
+        <h3>Remote setup</h3>
+        <ul>
+          <li>License file and microSD configuration in one remote session</li>
+          <li>App, converter and onboard software ready to use</li>
+          <li>A test scan together before we finish</li>
+        </ul>
+        <a class="btn btn-primary" href="https://t.me/Al_And_Leon">Ask for setup on Telegram</a>
+      </article>
+      <article class="offer">
+        <span class="tag">On request</span>
+        <h3>Custom build</h3>
+        <ul>
+          <li>Your form factor on the same architecture</li>
+          <li>Integration with your camera, mount or vehicle</li>
+          <li>Assembly and configuration for your task</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://t.me/Al_And_Leon">Describe your project</a>
+      </article>
+      <article class="offer">
+        <span class="tag">Barter</span>
+        <h3>Pay with promotion</h3>
+        <p>Run a YouTube channel, blog or community about scanning, surveying or robotics? Setup can be paid with a review or a feature of OpenSLAM.</p>
+        <a class="btn btn-ghost" href="https://t.me/Al_And_Leon">Offer a collaboration</a>
+      </article>
+    </div>
+    <p class="pay-note">Setup is a paid option. Terms are agreed individually: message us on Telegram at <a href="https://t.me/Al_And_Leon">@Al_And_Leon</a>.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section id="proof">
+    <div class="sec-head">
+      <span class="eyebrow">See it work</span>
+      <h2>Real scans, real numbers</h2>
+    </div>
+    <div class="proof">
+      <a href="https://tour.a2-lab.ru/dtyevqr7nd7a">
+        <span class="eyebrow">Live demo</span>
+        <h3>Colored cloud + panoramic tour</h3>
+        <p>Insta360 footage colors the point cloud and builds a walkable tour in the browser.</p>
+        <span class="go">Open tour →</span>
+      </a>
+      <a href="https://youtu.be/1wsdnFhcVqg">
+        <span class="eyebrow">Accuracy</span>
+        <h3>OpenSLAM vs total station</h3>
+        <p>Point cloud measurements compared with a total station survey.</p>
+        <span class="go">Watch on YouTube →</span>
+      </a>
+      <a href="https://github.com/Werdna0107/OpenSLAM">
+        <span class="eyebrow">Open source</span>
+        <h3>37 stars, 7 forks</h3>
+        <p>Build guide, STL files and tools under the MIT license.</p>
+        <span class="go">View repository →</span>
+      </a>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="roadmap">
+    <div class="sec-head">
+      <span class="eyebrow">Roadmap</span>
+      <h2>What is coming next</h2>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Feature</th><th>Status</th><th>What it gives you</th></tr></thead>
+        <tbody>
+          <tr><td>Own SLAM engine</td><td><span class="pill on">Coming soon</span></td><td>End-to-end in-house pipeline, from scan to point cloud</td></tr>
+          <tr><td>GNSS integration</td><td><span class="pill on">In progress</span></td><td>Geo-referenced clouds in world coordinates</td></tr>
+          <tr><td>Ground control points</td><td><span class="pill">Planned</span></td><td>Correct drift between surveyed reference points</td></tr>
+          <tr><td>Cloud upload service</td><td><span class="pill">Planned</span></td><td>Upload colored, panorama-tagged clouds from the field</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="faq">
+    <div class="sec-head">
+      <span class="eyebrow">FAQ</span>
+      <h2>Questions before you build</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>Is OpenSLAM free?</summary>
+        <p>The hardware design and STL files are published under the MIT license. Remote software setup is a paid option.</p>
+      </details>
+      <details>
+        <summary>How does remote setup work?</summary>
+        <p>You insert a microSD card into your PC and join a short remote session. We provide the license file and run the SD Card Installer. Then you put the card in the scanner and it is ready.</p>
+      </details>
+      <details>
+        <summary>Can I pay with advertising?</summary>
+        <p>Yes, if you have an audience in scanning, surveying, construction tech or robotics. Message us on Telegram and tell us about your channel.</p>
+      </details>
+      <details>
+        <summary>How accurate is it?</summary>
+        <p>We compared OpenSLAM clouds with total station measurements on a real site. The comparison video is on our YouTube channel.</p>
+      </details>
+      <details>
+        <summary>Can I get colored point clouds?</summary>
+        <p>Yes. Mount an Insta360 camera on the optional V-mount plate. The pipeline colors the cloud from the 360° footage and builds a panoramic tour.</p>
+      </details>
+      <details>
+        <summary>Do you work with teams outside Russia?</summary>
+        <p>Yes. Setup and support are remote, so your location does not matter.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<section class="final" aria-label="Contact">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow" style="color:var(--b-muted)">Book a setup session</span>
+      <h2>Built the scanner? Let's get it scanning.</h2>
+      <p>Tell us which LiDAR model you have. We reply on Telegram and schedule the session.</p>
+    </div>
+    <div class="contact">
+      <div class="row"><span>Telegram</span><a href="https://t.me/Al_And_Leon">@Al_And_Leon</a></div>
+      <div class="row"><span>Community chat</span><a href="https://t.me/a2blogchat">t.me/a2blogchat</a></div>
+      <div class="row"><span>Email</span><span><span id="mail">a2-pik@yandex.com</span> <button class="copy" id="copyMail" type="button">Copy</button></span></div>
+      <a class="btn btn-primary" href="https://t.me/Al_And_Leon">Message us on Telegram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>OpenSLAM by A2 engineering lab · MIT license</span>
+    <span><a href="https://github.com/Werdna0107/OpenSLAM">GitHub</a> · <a href="https://www.youtube.com/@a2-lab">YouTube</a> · <a href="https://a2-lab.ru/">a2-lab.ru</a></span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('copyMail').addEventListener('click',function(e){
+  var el=document.getElementById('mail');
+  navigator.clipboard.writeText(el.textContent).then(function(){e.target.textContent='Copied';},function(){
+    var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);e.target.textContent='Selected';});
+});
+</script>
+<script>
+// Conversion events: Telegram clicks (main goal), downloads, video plays. No-op until analytics is enabled.
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a'); if(!a||!window.gtag) return;
+  var h=a.href||'';
+  if(h.indexOf('t.me/')>-1) gtag('event','contact_telegram',{link_url:h});
+  else if(/\.(stl|apk|exe)$/i.test(h)) gtag('event','file_download',{file_name:h.split('/').pop()});
+  else if(/youtu\.?be/.test(h)) gtag('event','video_click',{link_url:h});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://werdna0107.github.io/OpenSLAM/sitemap.xml
