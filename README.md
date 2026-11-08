@@ -142,7 +142,7 @@ We flash the card, configure everything, and the software above works out of the
 
 If you want to configure everything yourself, here's what needs to be done on the NanoPi Zero 2:
 
-1. [Install ROS 2 Humble](https://docs.ros.org/en/humble/Installation.html)
+1. [Install ROS](https://www.ros.org/blog/getting-started/) (ROS 1 or ROS 2 — whichever fits your setup)
 2. [Install Livox SDK](https://github.com/Livox-SDK/livox_ros_driver)
 3. [Install Livox ROS Driver 2](https://github.com/Livox-SDK/livox_ros_driver2)
 4. Write a script for automatic scan start/stop
@@ -151,6 +151,8 @@ If you want to configure everything yourself, here's what needs to be done on th
 7. Process the recordings: [A2 mapper](https://github.com/Werdna0107/A2-slam) reads the A2 `.bin` format and ROS1 bags with the `/livox/lidar` and `/livox/imu` topics, or you can develop your own converter to a Share Studio-compatible format
 
 > This is a non-trivial setup. If you're not sure — [just ask us](https://t.me/a2blog), it's faster.
+
+> **Which ROS?** Either works — the list above is only an outline, and the scanner we ship does not depend on ROS. If you want to process your own recordings with [A2 mapper](https://github.com/Werdna0107/A2-slam), record an uncompressed **ROS 1 bag** with the topics `/livox/lidar` (Livox custom message format) and `/livox/imu`; ROS 2 bags are not read directly.
 
 ---
 
