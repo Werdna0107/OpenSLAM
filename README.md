@@ -2,7 +2,8 @@
 ### DIY Architectural & Surveying LiDAR SLAM Scanner
 
 > Compact open-source 3D scanner for **architectural and surveying work** built with **Livox Mid-360** and **NanoPi Zero 2**.
-> Scan any space and get a full 3D point cloud ready for import into Share Studio.
+> Scan any space and get a full 3D point cloud — built with the free in-house **[A2 mapper](https://github.com/Werdna0107/A2-slam)**,
+> with Share Studio kept as a fallback.
 
 <img src="images/hero.png" width="100%"/>
 
@@ -26,6 +27,7 @@
 
 ## 🆕 What's New
 
+- **Own SLAM engine is released: [A2 mapper](https://github.com/Werdna0107/A2-slam).** The point cloud is now built in-house, with no third-party software in the chain. The free **A2 mapper** for Windows and Android reads the scanner's `.bin` recordings directly and writes a `.las` point cloud plus a trajectory. It can also pull the trajectory onto surveyed **control points** (GCP / RTK) and output the cloud in their coordinates. Share Studio stays supported as a **fallback** route (see [Software & Setup](#-software--setup)).
 - **Storage: eMMC → microSD.** The board no longer needs a special eMMC-equipped NanoPi. Any regular NanoPi Zero 2 works — scans are written to a plain microSD card (**64GB+, U3/V30 or faster**). Cheaper board, easier to source, and the card itself is now a swappable, off-the-shelf part.
 - **App rewritten.** The Monitor screen now draws a **live point cloud + trajectory in plan view** while you walk, shows scanning-quality metrics, and — the thing everyone actually wants to know in the field — **how much recording time is left**, in hours and minutes, based on free space. Files got multi-select copy/delete. Settings got lidar model switching, setting the board's clock from your phone, and updating the scanner's onboard software right from the app (see below).
 - **Converter takes a whole folder now.** `A2 Bin to ShareStudio.exe` accepts **multiple `.bin` files at once**, and can now trim **both the start and the end** of a recording (previously only the start).
@@ -38,7 +40,7 @@ Older hardware (eMMC board) and the previous app/converter are **not deleted** �
 
 ## 💡 What is this?
 
-A handheld SLAM scanner designed for **architects, surveyors, and construction professionals** — capture spatial datasets and convert them for use in **Share Studio**, where point clouds are generated and processed.
+A handheld SLAM scanner designed for **architects, surveyors, and construction professionals** — capture spatial datasets and build point clouds from them with the free **[A2 mapper](https://github.com/Werdna0107/A2-slam)**. **Share Studio** remains available as a fallback processing route.
 
 The scanner is **open hardware**: source the components, 3D-print the parts, and assemble it yourself. For software, you can either handle the dataset conversion workflow on your own or contact us for setup and support.
 
@@ -104,9 +106,10 @@ The repository includes ready-to-use software in the [`/software`](software/) fo
 
 | File | Description |
 |------|-------------|
-| Share Studio **v2.2.4** *(not included, third-party)* | Point cloud processing software by SHARE3DCAM — generates the final point cloud from the converted scan. The converter is built for **v2.2.4**; newer versions (2.6.x) are not compatible yet. Download v2.2.4 from the official SHARE website: *Support → Software → SHARE PointClouds Studio → Version History*. Having trouble? Message me on Telegram [@Al_And_Leon](https://t.me/Al_And_Leon). |
+| **[A2 mapper](https://github.com/Werdna0107/A2-slam)** — Windows `.exe` and Android `.apk` *(separate repository)* | **Recommended.** Builds the point cloud (`.las`) and the trajectory straight from the scanner's `.bin` recordings, with optional control-point (RTK / GCP) correction. Free to use under its own freeware license — see the [A2-slam](https://github.com/Werdna0107/A2-slam) repository. |
+| Share Studio **v2.2.4** *(fallback · not included, third-party)* | Point cloud processing software by SHARE3DCAM — an alternative way to generate the final point cloud from the converted scan. The converter is built for **v2.2.4**; newer versions (2.6.x) are not compatible yet. Download v2.2.4 from the official SHARE website: *Support → Software → SHARE PointClouds Studio → Version History*. Having trouble? Message me on Telegram [@Al_And_Leon](https://t.me/Al_And_Leon). |
 | [`AtlasScanner.apk`](software/AtlasScanner.apk) | Android app — connect to the scanner, watch the live map and metrics, manage files, update the scanner's software |
-| [`A2 Bin to ShareStudio.exe`](software/A2%20Bin%20to%20ShareStudio.exe) | Converts scan output to Share Studio format. Now takes multiple `.bin` files at once, trims start **and end** |
+| [`A2 Bin to ShareStudio.exe`](software/A2%20Bin%20to%20ShareStudio.exe) | *Fallback route:* converts scan output to Share Studio format. Takes multiple `.bin` files at once, trims start **and end** |
 | [`A2 SD Card Installer.exe`](software/A2%20SD%20Card%20Installer.exe) | Flashes and configures a microSD card — used for remote setup (Option A below) |
 
 ### App screens
@@ -145,7 +148,7 @@ If you want to configure everything yourself, here's what needs to be done on th
 4. Write a script for automatic scan start/stop
 5. Configure and broadcast a Wi-Fi access point on the board
 6. Develop a smartphone app to control start/stop over Wi-Fi
-7. Develop a converter to transform scan output into a Share Studio-compatible format
+7. Process the recordings: [A2 mapper](https://github.com/Werdna0107/A2-slam) reads the A2 `.bin` format and ROS1 bags with the `/livox/lidar` and `/livox/imu` topics, or you can develop your own converter to a Share Studio-compatible format
 
 > This is a non-trivial setup. If you're not sure — [just ask us](https://t.me/a2blog), it's faster.
 
@@ -164,6 +167,8 @@ If you want to configure everything yourself, here's what needs to be done on th
 3. Slowly lift it and start walking through the space
 4. To stop: use the **app** or simply disconnect the power
 
+> 💡 **For the best result with A2 mapper:** stand still for about **10 seconds** at the start, walk the route, **come back to the exact spot you started from**, and stand still for about **10 seconds** again before you stop. The start and the finish are then tied together and the loop is closed.
+
 ### Connecting the app
 
 1. Disable VPN and mobile data on your phone
@@ -176,8 +181,8 @@ If you want to configure everything yourself, here's what needs to be done on th
 ### Getting your data
 
 1. Copy the scan straight from the app — to a **USB drive** plugged into the NanoPi, or **directly to your phone**
-2. Run `A2 Bin to ShareStudio.exe` on your PC to convert the file(s) — a whole folder at once if you like
-3. Import into **Share Studio** and build the point cloud
+2. Open the `.bin` file(s) in **[A2 mapper](https://github.com/Werdna0107/A2-slam)** and press **Build** — you get a `.las` point cloud and a trajectory (the repository explains the optional control-point correction)
+3. *Fallback:* if you prefer Share Studio, run `A2 Bin to ShareStudio.exe` on your PC to convert the file(s) — a whole folder at once if you like — and import them into **Share Studio** to build the point cloud there
 
 ### Accuracy vs total station
 
@@ -240,14 +245,15 @@ OpenSLAM/
 
 This is not a finished project — it's an actively evolving platform.
 
-Point clouds are colored and panorama tours already work end to end. Here's what we're building toward by the end of the year:
+Point clouds are colored, panorama tours work end to end, and the in-house SLAM engine — [A2 mapper](https://github.com/Werdna0107/A2-slam) — is released. Here is where everything stands:
 
 | Feature | Status | What it gives you |
 |---------|--------|-------------------|
-| **GNSS integration** | 🔄 In progress | Geo-referenced point clouds placed directly into world coordinate systems |
-| **Ground control points (GCP)** | 🔄 Planned | Mark surveyed reference points during a scan to correct drift between them |
-| **Own SLAM engine** | 🔄 In progress | Nearing quality parity with Share Studio — moving toward an end-to-end in-house pipeline |
-| **Web service for cloud uploads** | 🔄 Planned | Upload point clouds — including colored, panorama-tagged ones — straight from the field |
+| **GNSS integration** | ✅ Implemented | Geo-referenced point clouds placed directly into world coordinate systems |
+| **Ground control points (GCP)** | ✅ Implemented | Mark surveyed reference points during a scan; A2 mapper corrects the drift between them |
+| **Own SLAM engine** | ✅ Implemented | [A2 mapper](https://github.com/Werdna0107/A2-slam) — an end-to-end in-house pipeline from the scanner's `.bin` to the point cloud. Share Studio stays as a fallback |
+| **3D Gaussian Splatting (3DGS)** | 🔄 In progress | Photorealistic, navigable scenes built from scan data |
+| **Web service for cloud uploads** | 📅 Planned | Upload point clouds — including colored, panorama-tagged ones — straight from the field |
 
 > 📣 Follow updates in our Telegram — **[t.me/a2blog](https://t.me/a2blog)**
 
@@ -256,6 +262,8 @@ Point clouds are colored and panorama tours already work end to end. Here's what
 ## 📄 License
 
 MIT License — free to use, modify, and share. See [`LICENSE`](LICENSE).
+
+The software built on the scanner's data, [A2 mapper](https://github.com/Werdna0107/A2-slam), is distributed separately under its own freeware license.
 
 ---
 
